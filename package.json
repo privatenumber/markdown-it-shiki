@@ -1,0 +1,59 @@
+{
+  "name": "markdown-it-shiki",
+  "version": "0.3.0",
+  "description": "Markdown It plugin for Shiki",
+  "keywords": [
+    "markdown-it",
+    "markdown-it-plugin",
+    "highlight",
+    "shiki"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antfu/markdown-it-shiki.git"
+  },
+  "author": "Anthony Fu <anthonyfu117@hotmail.com>",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "sideEffects": false,
+  "bugs": {
+    "url": "https://github.com/antfu/markdown-it-shiki/issues"
+  },
+  "homepage": "https://github.com/antfu/markdown-it-shiki#readme",
+  "scripts": {
+    "prepublishOnly": "npm run build",
+    "watch": "npm run build -- --watch",
+    "dev": "esno src/index.ts",
+    "build": "tsup src/index.ts src/worker.ts --format cjs,esm --dts --external ./worker",
+    "publish:ci": "npm publish --access public",
+    "release": "npx bumpp --commit --push --tag && npm run publish:ci"
+  },
+  "dependencies": {
+    "debug": "^4.3.2",
+    "shiki": "^0.9.12",
+    "synckit": "^0.6.0"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config-ts": "^0.10.0",
+    "@types/debug": "^4.1.7",
+    "@types/markdown-it": "^12.2.3",
+    "@types/node": "^16.11.7",
+    "eslint": "^8.2.0",
+    "esno": "^0.12.0",
+    "markdown-it": "^12.2.0",
+    "tsup": "^5.7.0",
+    "typescript": "^4.4.4"
+  }
+}
